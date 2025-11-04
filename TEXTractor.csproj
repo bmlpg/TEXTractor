@@ -20,13 +20,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Reference Include="ToxyFramework">
-      <HintPath>..\toxy\ToxyFramework\bin\Debug\netstandard2.0\ToxyFramework.dll</HintPath>
-    </Reference>
+	  <EmbeddedResource Include="resources/textractor_logo.png" />
   </ItemGroup>
 
   <ItemGroup>
-	  <EmbeddedResource Include="resources/textractor_logo.png" />
+    <Reference Include="ToxyFramework">
+      <HintPath>..\toxy\ToxyFramework\bin\Release\netstandard2.0\ToxyFramework.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
 </Project>
