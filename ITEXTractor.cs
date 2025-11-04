@@ -1,0 +1,102 @@
+﻿using OutSystems.ExternalLibraries.SDK;
+
+namespace TEXTractor
+{
+    
+    [OSInterface(Name = "TEXTractor", Description = "Extract text and/or metadata from 32 different file formats, including pdf, xlsx, csv, and docx.", IconResourceName = "TEXTractor.resources.textractor_logo.png")]
+    public interface ITEXTractor
+    {
+        [OSAction(Description = "")]
+        public void GetVCard(
+            [OSParameter(Description = "File name including extension. Supported extensions/file types: vcf.")]
+            string FileName,
+            [OSParameter(Description = "Binary content of the file.")]
+            byte[] FileContent,
+            [OSParameter(Description = "Structured representation of the vcard content.")]
+            out BusinessCards BusinessCards
+        );
+
+        [OSAction(Description = "")]
+        public void GetDom(
+            [OSParameter(Description = "File name including extension. Supported extensions/file types: htm, html, xml.")]
+            string FileName,
+            [OSParameter(Description = "Binary content of the file.")]
+            byte[] FileContent,
+            [OSParameter(Description = "Structured representation of the dom content.")]
+            out Dom Dom
+        );
+
+        [OSAction(Description = "")]
+        public void GetSlideshow(
+            [OSParameter(Description = "File name including extension. Supported extensions/file types: pptx.")]
+            string FileName,
+            [OSParameter(Description = "Binary content of the file.")]
+            byte[] FileContent,
+            [OSParameter(Description = "Structured representation of the slideshow content.")]
+            out Slideshow Slideshow
+        );
+
+        [OSAction(Description = "")]
+        public void GetSpreadsheet(
+            [OSParameter(Description = "File name including extension. Supported extensions/file types: csv, xls, xlsx.")]
+            string FileName,
+            [OSParameter(Description = "Binary content of the file.")]
+            byte[] FileContent,
+            [OSParameter(Description = "CSV extraction options.")]
+            SpreadsheetCSVOptions CSVOptions,
+            [OSParameter(Description = "Excel extraction options.")]
+            SpreadsheetExcelOptions ExcelOptions,
+            [OSParameter(Description = "Structured representation of the spreadsheet content.")]
+            out Spreadsheet Spreadsheet
+        );
+
+        [OSAction(Description = "")]
+        public void GetEmail(
+            [OSParameter(Description = "File name including extension. Supported extensions/file types: eml, msg.")]
+            string FileName,
+            [OSParameter(Description = "Binary content of the file.")]
+            byte[] FileContent,
+            [OSParameter(Description = "Structured representation of the email content.")]
+            out Email Email
+        );
+       
+        [OSAction(Description = "")]
+        public void GetText(
+            [OSParameter(Description = "File name including extension. Supported extensions/file types: csv, docx, eml, htm, html, msg, pdf, pptx, rtf, txt, vcf, xls, xlsx, xml, zip.")]
+            string FileName,
+            [OSParameter(Description = "Binary content of the file.")]
+            byte[] FileContent,
+            [OSParameter(Description = "Excel extraction options.")]
+            TextExcelOptions ExcelOptions,
+            [OSParameter(Description = "Word extraction options.")]
+            TextWordOptions WordOptions,
+            [OSParameter(Description = "Text representation of the file content.")]
+            out string Text
+        );
+
+        [OSAction(Description = "")]
+        public void GetMetadata(
+            [OSParameter(Description = "File name including extension. Supported extensions/file types: aif, ape, docx, flac, gif, jpeg, jpg, pubx, mp3, png, ppt, pptx, pub, shw, sldprt, tiff, vsd, vsdx, wma, xls, xlsx.")]
+            string FileName,
+            [OSParameter(Description = "Binary content of the file.")]
+            byte[] FileContent,
+            [OSParameter(Description = "Structured representation of the file metadata.")]
+            out Metadata Metadata
+        );
+
+        [OSAction(Description = "")]
+        public void GetDocument(
+            [OSParameter(Description = "File name including extension. Supported extensions/file types: docx, pdf")]
+            string FileName,
+            [OSParameter(Description = "Binary content of the file.")]
+            byte[] FileContent,
+            [OSParameter(Description = "Word extraction options.")]
+            DocumentWordOptions WordOptions,
+            [OSParameter(Description = "Structured representation of the document content.")]
+            out Document Document
+        );
+
+        [OSAction(Description = "Run this action within a Timer if you want to prevent AWS Lambda \"cold starts\".")]
+        public void Ping();
+    }    
+}
