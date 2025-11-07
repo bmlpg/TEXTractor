@@ -417,7 +417,5 @@ namespace TEXTractor
             ssDocument = document;
         }
 
-        public void Ping() { }
-
     }
 }
